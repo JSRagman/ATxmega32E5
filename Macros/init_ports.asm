@@ -1,11 +1,11 @@
-; init_ports                                                                         2Dec2019
+; init_ports                                                                         3Dec2019
 ; -------------------------------------------------------------------------------------------
 .macro init_ports
 ; PORT A
 ;   Pin   Dir   Lvl        OPC              ISC          Configuration      Connected To
 ;   ---   ---   ---   -------------     ------------     ------------------------------------
-;    7    In     1                      falling-edge     10K pull-up        QENC B
-;    6    In     1                      falling-edge     10K pull-up        QENC A
+;    7    In     1                      both edges       10K pull-up        QENC B
+;    6    In     1                      both edges       10K pull-up        QENC A
 ;    5    In     1     pull-up          falling-edge                        QENC push switch
 ;    4    Out    1     wired-AND                         10K pull-up        Display !RESET
 ;    3    Out    0     wired-OR                          10K pull-down      Red   LED on/off
@@ -14,7 +14,7 @@
 ;    0    In     0                      rising-edge      driven high/low    Green PB switch
 ; -------------------------------------------------------------------------------------------
 ;   Port A Inputs
-    ldi    r16,             ISC_FALLING_c        ; ISC = falling-edge
+    ldi    r16,             ISC_EDGES_c          ; ISC = both edges
     sts    PORTA_PIN7CTRL,  r16                  ;     PA7
     sts    PORTA_PIN6CTRL,  r16                  ;     PA6
     ldi    r16,             ISC_FALLING_c        ; ISC = falling-edge,
