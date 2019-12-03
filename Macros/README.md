@@ -11,11 +11,14 @@ Constants re-defined in this way are suffixed with \_c instead of the
 \_gc that follows Atmel definitions.
 
 PORT_ISC_INPUT_DISABLE_gc, for example, becomes ISC_DISABLE_c.
-PORT_ISC_BOTHEDGES_gc is re-defined as ISC_EDGES_c.
+
+PORT_ISC_BOTHEDGES_gc becomes ISC_EDGES_c.
+
+And so on...
 
 Is it better to use the standard definitions? Certainly, but if you
 pile up enough 25-character constant identifiers, the whole thing
-becomes unreadable.
+becomes an unreadable mess.
 # Files
 ### init_ports.asm
 #### Purpose
