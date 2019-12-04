@@ -2,7 +2,7 @@
 These are mostly initialization chores that would otherwise
 clutter the power-on reset code.
 # Notes
-### Use of Constants
+### Constants
 I try to stick to the definitions found in ATxmega32e5def.inc,
 but in some cases I have re-defined constants in order to shorten
 egregiously long names.
@@ -19,6 +19,7 @@ And so on...
 Is it better to use the standard definitions? Certainly, but if you
 pile up enough 25-character constant identifiers, the whole thing
 becomes an unreadable mess.
+
 # Files
 ### init_ports.asm
 #### Purpose
