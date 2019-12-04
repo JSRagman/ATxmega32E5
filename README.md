@@ -1,4 +1,4 @@
-# Purpose
+## Purpose
 Basic exploration of the ATxmega32E5 MCU
 - I2C Interface
 - SPI
@@ -6,21 +6,28 @@ Basic exploration of the ATxmega32E5 MCU
 - Timer/Counters
 - External interrupts
 - If I figure out what the Custom Logic Module is good for, we'll cover that too.
+
 ## Status
-Preliminary - still trying to find my datasheet with both hands
+Circuit layout complete. Writing macros and initialization code.
+
+I'm going to start adding files. Keep in mind that all the components are
+not yet in place.
+
 ## Development Tools
-### Atmel Studio 7 - AVR Assembler
-### Atmel ICE - Program and Debug Interface (PDI)
-### XMEGA E5 Xplained
+#### Atmel Studio 7 - AVR Assembler
+#### Atmel ICE - Program and Debug Interface (PDI)
+#### XMEGA E5 Xplained
 - Forget the board controller
 - Say goodbye to the demo application
 - Onboard 128 x 32 OLED... might come in handy
 - Rotary encoder with push-switch... that too
 - User buttons and LEDs... you can never have too many
 - Ambient light sensor... red-headed stepchild - I'm sure we can think of something
-### Extra Hardware
+
+## Extra Hardware
 - TWI-connected character OLED display
-- Illuminated pushbutton switches (debounced)
+- Illuminated pushbutton switches (emphatically debounced)
+
 ## References
 1. ATxmega32E5/16E5/8E5 XMEGA E5 Data Sheet,
    - DS40002059A, 08/2018
