@@ -8,7 +8,7 @@ Basic exploration of the ATxmega32E5 MCU
 - If I figure out what the Custom Logic Module is good for, we'll cover that too.
 
 ## Status
-Slow Coach:
+#### Slow Coach:
 
 This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
 To make matters worse, I actually read the datasheets and application notes.
@@ -16,6 +16,11 @@ Oh yes, I also insist on writing and testing my own
 assembly code BEFORE looking at how others have approached a given problem.
 
 Take heart. The project progresses slowly, but it does progress.
+#### Take Heed
+Writing is fast. Testing is slow.
+
+Having said that, I am uploading assembly code that has not been (fully) tested.
+I will, naturally, crow, trumpet, and celebrate when this changes.
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
