@@ -24,11 +24,13 @@ datasheet, just plain wrong. As a result, some sections are heavily commented an
 comments diverge markedly from the original .inf file.
 
 I would like you to keep two things in mind:
-1. I have not altered any constant values, only the comments that surround them, and
+1. I have not altered any constant values, only comments and number formats, and
 2. Said alterations were to bring comments into line with the datasheet - not as a result of operational testing, and
 3. The datasheet itself was muddled more often than I would have guessed, and
 4. Additional clarity was needed, and
-5. There are never just two things.
+5. There are never just two things, and, finally,
+6. Regarding the Atmel XMEGA E Manual Atmel–42005E–AVR–XMEGA E–11/2014: Did anybody even proof read
+that? Did they?
 
 ## Confession
 As noted above, not all of the relevant constants have been transcribed here.
