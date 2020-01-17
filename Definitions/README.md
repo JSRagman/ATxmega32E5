@@ -6,15 +6,12 @@ I do.
 
 Here are a great many (not all) definitions from the ATxmega32e5def.inc file,
 split into separate files, by function, to simplify lookup.
-
-Register addresses are presented as hexadecimal. A number of constants have
-been unbefuddled, without changing their actual values.
-
-Constant names, as you would expect, are precisely the same as they appear in the
-original .inc file.
-
-A single constant definition may be duplicated in several different files if it
-pertains to more than one interface.
+- Register addresses are presented as hexadecimal
+- A number of constants have been unbefuddled, without changing their actual values
+- Constant names, as you would expect, are precisely the same as they appear in the
+original .inc file
+- A single constant definition may be duplicated in several different files if it
+pertains to more than one interface
 
 **These files are intended for reference only, and not to be included in any project.**
 
