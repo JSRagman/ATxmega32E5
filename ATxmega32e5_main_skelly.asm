@@ -106,27 +106,40 @@ irq_port_A:
 
 
 
-
-
-; reset                                                               26Nov2019
+; reset                                                               17Jan2020
 ; -----------------------------------------------------------------------------
+; Configuration:
+;     System Clock      32      MHz internal RC oscillator
+;     RTC Clock         32.768  kHz internal oscillator
 reset:
+;   Initialize register constants
+    clr    rZero
 
-; Set System Clock to 8 MHz RC Oscillator
+;   Set System Clock to 32 MHz internal RC oscillator
 ;   CPU_CCP  (0x0034) - Configuration Change Protection (CCP)
 ;   CLK_CTRL (0x0040) - Clock Control Register
+
+;   Enable oscillators that will be used
+    ldi    r20,      (1<<OSC_RC2MEN_bp)     ;   2 MHz internal
+    ori    r20,      (1<<OSC_RC32MEN_bp)    ;  32 MHz internal
+    ori    r20,      (1<<OSC_RC32KEN_bp)    ;  32.768 kHz internal
+    sts    OSC_CTRL, r16
+
+;   Wait for stable 32 MHz oscillator.
+;   Note: This section assumes that the 32MHz oscillator WILL be ready.
+;         It could be written to select an alternate configuration if
+;         32MHz fails to show up within a given time limit.
+;         As it is, you would be stuck here on a 32MHz failure.
+reset_sysclock_wait:
+    lds    r16,    OSC_STATUS               ; r16 = OSC_STATUS
+    andi   r16,    OSC_RC32MRDY_bm          ; if (32MHz != READY)
+    breq   reset_sysclock_wait              ;     goto reset_sysclock_wait
+
+;   Clock is ready - Set system clock
     ldi    r16,       CCP_IOREG_gc          ; CCP - Write to protected I/O register
-    ldi    r17,       CLK_SCLKSEL_RC8M_gc   ; CLK - Internal 8 MHz RC Oscillator
+    ldi    r17,       CLK_SCLKSEL_RC32M_gc  ; CLK - 32 MHz internal RC oscillator
     sts    CPU_CCP,   r16
     sts    CLK_CTRL,  r17
-
-
-
-reset_success:
-
-    rjmp mainloop
-
-reset_error:
 
 
 
