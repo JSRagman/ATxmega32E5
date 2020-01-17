@@ -19,7 +19,7 @@ pertains to more than one interface
 My intention, initially, was only to transcribe definitions into separate files so
 that the act of looking up a constant name would be easy (easier, anyway).
 
-But then I started correcting comments that were inconsistent, muddled, or, according to the
+But then I started correcting comments that were inconsistent, confusing, or, according to the
 datasheet, just plain wrong. As a result, some sections are heavily commented and many
 comments diverge markedly from the original .inf file.
 
