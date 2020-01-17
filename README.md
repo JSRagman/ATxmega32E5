@@ -23,6 +23,12 @@ not yet in place.
 - Rotary encoder with push-switch... that too
 - User buttons and LEDs... you can never have too many
 - Ambient light sensor... red-headed stepchild - I'm sure we can think of something
+#### Tightly Wrapped
+around the axle...
+The Xplained board makes me give up more IO pins than I would like for the on-board, um... stuff.
+
+Having boards made, however, is expensive. Also, I'm not confident in my ability to hand-solder a 32TQFP package.
+What to do... what to do.
 
 ## Extra Hardware
 - TWI-connected character OLED display
