@@ -24,7 +24,7 @@ datasheet, just plain wrong. As a result, some sections are heavily commented an
 comments diverge markedly from the original .inf file.
 
 I would like you to keep two things in mind:
-1. I have not found it necessary to alter any constant values, only the comments that surround them, and
+1. I have not altered any constant values, only the comments that surround them, and
 2. Said alterations were to bring comments into line with the datasheet - not as a result of operational testing, and
 3. The datasheet itself was muddled more often than I would have guessed, and
 4. Additional clarity was needed, and
