@@ -8,11 +8,14 @@ Basic exploration of the ATxmega32E5 MCU
 - If I figure out what the Custom Logic Module is good for, we'll cover that too.
 
 ## Status
-Circuit layout complete. Writing macros and initialization code.
+Slow Coach:
 
-I'm going to start adding files. Keep in mind that all the components are
-not yet in place.
+This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
+To make matters worse, I actually read the datasheets and application notes.
+Oh yes, I also insist on writing and testing my own
+assembly code BEFORE looking at how others have approached a given problem.
 
+Take heart. The project progresses slowly, but it does progress.
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
