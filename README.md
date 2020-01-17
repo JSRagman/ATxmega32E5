@@ -8,7 +8,7 @@ Basic exploration of the ATxmega32E5 MCU
 - If I figure out what the Custom Logic Module is good for, we'll cover that too.
 
 ## Status
-#### Slow Coach:
+#### Slow Coach
 
 This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
 To make matters worse, I actually read the datasheets and application notes.
