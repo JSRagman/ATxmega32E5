@@ -1,4 +1,6 @@
 # ATxmega32e5def.inc Definitions
+## Applicability
+ATxmega32e5def.inc, Created 2012-11-02 13:32, Version 1.00
 ## Purpose
 Do you have a horror of opening and searching the ATxmega32e5def.inc file?
 
@@ -6,10 +8,11 @@ I do.
 
 Here are a great many (not all) definitions from the ATxmega32e5def.inc file,
 split into separate files, by function, to simplify lookup.
-- Register addresses are presented as hexadecimal
-- A number of constants have been unbefuddled, without changing their actual values
-- Constant names, as you would expect, are precisely the same as they appear in the
-original .inc file
+- Register addresses are formatted as 16-bit hex
+- Bit positions are formatted as decimal (0-7)
+- Constants are formatted as 8-bit hex
+- Bit masks are formatted as 8-bit hex (even though I prefer binary)
+- Constant names, as you would expect, are precisely the same as they appear in ATxmega32e5def.inc
 - A single constant definition may be duplicated in several different files if it
 pertains to more than one interface
 
@@ -24,7 +27,7 @@ datasheet, just plain wrong. As a result, some sections are heavily commented an
 comments diverge markedly from the original .inc file.
 
 I would like you to keep two things in mind:
-1. I have not altered any constant values, only comments and number formats, and
+1. I have not altered any values, only comments and number formats, and
 2. Said alterations were to bring comments into line with the datasheet - not as a result of operational testing, and
 3. The datasheet itself was muddled more often than I would have guessed, and
 4. Additional clarity was needed, and
@@ -32,11 +35,9 @@ I would like you to keep two things in mind:
 6. Regarding the Atmel XMEGA E Manual Atmel–42005E–AVR–XMEGA E–11/2014: Did anybody even proof read
 that? Did they?
 
-## Confession
-As noted above, not all of the relevant constants have been transcribed here.
-I must admit that I included only those of which I was in need at the time.
-The omissions, therefore, may seem arbitrary. Indeed, they are. I shall do
-better in the future. And perhaps fill in the blanks. Look for updates.
+## Update
+My definition files are becoming tutorials. Something needs to be done about this.
+I'll let you know when I figure out what.
 
 ## Take Heed
 Great care was taken when creating these files. You should, however, keep in
