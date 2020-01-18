@@ -21,7 +21,7 @@ that the act of looking up a constant name would be easy (easier, anyway).
 
 But then I started correcting comments that were inconsistent, confusing, or, according to the
 datasheet, just plain wrong. As a result, some sections are heavily commented and many
-comments diverge markedly from the original .inf file.
+comments diverge markedly from the original .inc file.
 
 I would like you to keep two things in mind:
 1. I have not altered any constant values, only comments and number formats, and
@@ -40,4 +40,4 @@ better in the future. And perhaps fill in the blanks. Look for updates.
 
 ## Take Heed
 Great care was taken when creating these files. You should, however, keep in
-mind that I am but a mortal man.
+mind that I am but a mortal man and proceed accordingly.
