@@ -58,3 +58,13 @@ mind that I am but a mortal man and proceed accordingly.
      - Ref 3 defines TC4_STOP_bp = 4 and TC5_STOP_bp = 4
      - Ref 3 also defines TC4_STOP_bm = 0x10 and TC5_STOP_bm = 0x10, which correspond to bit position 4
      - Which is it? Bit 4 or bit 5?
+
+#### Omissions
+1. TWI SMBUS L1 Compliance
+   - Missing register/constant definitions
+     - Ref 2 Sects 18 (TWI - Two-Wire Interface) and 19 (TWI SMBUS L1 Compliance) specify a number of
+     SMBUS-related constants and registers
+     - Ref 3 defines none of it, not even the TIMEOUT_TOS or TIMEOUT_TOCONF register addresses
+   - Workaround
+     - I added the relevant definitions to TWI_Defs.asm
+     - The added definitions were transcribed from Ref 2 but not operationally tested
