@@ -27,7 +27,8 @@ datasheet, just plain wrong. As a result, some sections are heavily commented an
 comments diverge markedly from the original.
 
 I would like you to keep two things in mind:
-1. I have not altered any values, only comments and number formats, and
+1. ~~I have not altered any values, only comments and number formats, and~~
+Nevermind. I added an entire section to TWI_Defs.asm
 2. Said alterations were to bring comments into line with the datasheet - not as a result of operational testing, and
 3. The datasheet itself was muddled more often than I would have guessed, and
 4. Additional clarity was needed, and
