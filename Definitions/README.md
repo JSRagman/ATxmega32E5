@@ -35,6 +35,7 @@ Nevermind. I added an entire section to TWI_Defs.asm
 5. There are never just two things, and, finally,
 6. Regarding the Atmel XMEGA E Manual Atmel–42005E–AVR–XMEGA E–11/2014: Did anybody even proof read
 that? Did they?
+7. PS If you hate life, amuse yourself with the Conflicts section, below.
 
 ## Update
 My definition files are becoming tutorials. Something needs to be done about this.
@@ -43,3 +44,17 @@ I'll let you know when I figure out what.
 ## Take Heed
 Great care was taken when creating these files. You should, however, keep in
 mind that I am but a mortal man and proceed accordingly.
+
+## Conflicts/Omissions
+#### Reference
+1. XMEGA E5 Data Sheet,  DS40002059A, Rev A - 08/2018
+2. XMEGA E MANUAL,       Atmel–42005E–AVR–XMEGA E–11/2014
+3. ATxmega32E5def.inc,   Version 1.00, 2012-11-02 13:32
+
+#### Conflicts
+1. 16-bit Timer/Counter Type 4 and 5
+   - CTRLGCLR/CTRLGSET Register, Timer/Counter STOP bit
+     - Ref 2 indicates that STOP is in bit position 5 (Sects. 13.12.8, 13.13.9)
+     - Ref 3 defines TC4_STOP_bp = 4 and TC5_STOP_bp = 4
+     - Ref 3 also defines TC4_STOP_bm = 0x10 and TC5_STOP_bm = 0x10, which correspond to bit position 4
+     - Which is it? Bit 4 or bit 5?
