@@ -11,16 +11,13 @@ Basic exploration of the ATxmega32E5 MCU
 #### Slow Coach
 
 This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
-To make matters worse, I actually read the datasheets and application notes.
-Oh yes, I also insist on writing and testing my own
-assembly code BEFORE looking at how others have approached a given problem.
+To make matters worse, I actually read datasheets and application notes.
 
-Take heart. The project progresses slowly, but it does progress.
-#### Take Heed
-Writing is fast. Testing is slow.
+At present, I'm all bound up trying to make ATxmega32e5def.inc correspond to the XMEGA E Manual
+and the XMEGA E5 Data Sheet. I did not expect to encounter many problems. Fool.
 
-Having said that, I am uploading assembly code that has not been (fully) tested.
-I will, naturally, crow, trumpet, and celebrate when this changes.
+I come back here periodically and read the Purpose section, above, just to remind myself...
+
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
