@@ -13,9 +13,6 @@ Basic exploration of the ATxmega32E5 MCU
 This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
 To make matters worse, I actually read datasheets and application notes.
 
-At present, I'm all bound up trying to make ATxmega32e5def.inc correspond to the XMEGA E Manual
-and the XMEGA E5 Data Sheet. I did not expect to encounter many problems. Fool.
-
 I come back here periodically and read the Purpose section, above, just to remind myself...
 
 ## Development Tools
