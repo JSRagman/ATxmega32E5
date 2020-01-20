@@ -21,6 +21,10 @@ pertains to more than one interface
 
 **These files are intended for reference only, and not to be included in any project.**
 
+## Status
+As of right now, I'm going to spend less effort on definitions and more effort on actually
+writing code. These definitions will be expanded as time permits.
+
 ## Illumination
 My intention, initially, was only to transcribe definitions into separate files so
 that the act of looking up a constant name would be easy (easier, anyway).
