@@ -24,7 +24,7 @@ that the act of looking up a constant name would be easy (easier, anyway).
 
 But then I started correcting comments that were inconsistent, confusing, or, according to the
 datasheet, just plain wrong. As a result, some sections are heavily commented and many
-comments diverge markedly from the original.
+comments diverge markedly from the originals.
 
 I would like you to keep two things in mind:
 1. ~~I have not altered any values, only comments and number formats, and~~
@@ -35,11 +35,7 @@ Nevermind. I added an entire section to TWI_Defs.asm
 5. There are never just two things, and, finally,
 6. Regarding the Atmel XMEGA E Manual Atmel–42005E–AVR–XMEGA E–11/2014: Did anybody even proof read
 that? Did they?
-7. PS If you hate life, amuse yourself with the Conflicts section, below.
-
-## Update
-My definition files are becoming tutorials. Something needs to be done about this.
-I'll let you know when I figure out what.
+7. PS - If you hate life, amuse yourself with the Conflicts/Omissions section, below.
 
 ## Take Heed
 Great care was taken when creating these files. You should, however, keep in
