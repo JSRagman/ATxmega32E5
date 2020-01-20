@@ -21,7 +21,7 @@
 
 ; References:
 ;     1.  XMEGA E5 Data Sheet,  DS40002059A, Rev A - 08/2018
-;     2.  XMEGA E MANUAL,       Atmel–42005E–AVR–XMEGA E–11/2014
+;     2.  XMEGA E MANUAL,       Atmelâ€“42005Eâ€“AVRâ€“XMEGA Eâ€“11/2014
 ;     3.  ATxmega32E5def.inc,   Version 1.00, 2012-11-02 13:32
 
 
@@ -482,11 +482,11 @@
 ; (Ref 1, Sect. 15.3 and Ref 2, Sects. 13.15, 13.17)
 ; -----------------------------------------------------------------------------
 ; -----------------------------------------------------------------------------
-.equ TCC4_OVF_vect              = 0x18      ; Overflow
-.equ TCC4_ERR_vect              = 0x1A      ; Error
-.equ TCC4_CCA_vect              = 0x1C      ; Channel A Compare or Capture
-.equ TCC4_CCB_vect              = 0x1E      ; Channel B Compare or Capture
-.equ TCC4_CCC_vect              = 0x20      ; Channel C Compare or Capture
-.equ TCC4_CCD_vect              = 0x22      ; Channel D Compare or Capture
+.equ TCC4_OVF_vect              = 0x0018    ; Overflow
+.equ TCC4_ERR_vect              = 0x001A    ; Error
+.equ TCC4_CCA_vect              = 0x001C    ; Channel A Compare or Capture
+.equ TCC4_CCB_vect              = 0x001E    ; Channel B Compare or Capture
+.equ TCC4_CCC_vect              = 0x0020    ; Channel C Compare or Capture
+.equ TCC4_CCD_vect              = 0x0022    ; Channel D Compare or Capture
 
 
