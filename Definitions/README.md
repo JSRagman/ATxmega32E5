@@ -1,18 +1,21 @@
 # ATxmega32e5def.inc Definitions
-## Applicability
-ATxmega32e5def.inc, Created 2012-11-02 13:32, Version 1.00
+## References
+1. XMEGA E5 Data Sheet,  DS40002059A, Rev A - 08/2018
+2. XMEGA E MANUAL,       Atmel–42005E–AVR–XMEGA E–11/2014
+3. ATxmega32E5def.inc,   Version 1.00, 2012-11-02 13:32
+
 ## Purpose
 Do you have a horror of opening and searching the ATxmega32e5def.inc file?
 
 I do.
 
-Here are a great many (not all) definitions from the ATxmega32e5def.inc file,
-split into separate files, by function, to simplify lookup.
+Here are many (not all) definitions from ATxmega32e5def.inc, split into separate files to
+simplify lookup. Formatting has been applied to improve consistency/readability:
 - Register addresses are formatted as 16-bit hex
 - Bit positions are formatted as decimal (0-7)
 - Constants are formatted as 8-bit hex
 - Bit masks are formatted as 8-bit hex (even though I prefer binary)
-- Constant names, as you would expect, are precisely the same as they appear in ATxmega32e5def.inc
+- Constant names, as you would expect, are unchanged
 - A single constant definition may be duplicated in several different files if it
 pertains to more than one interface
 
@@ -42,11 +45,6 @@ Great care was taken when creating these files. You should, however, keep in
 mind that I am but a mortal man and proceed accordingly.
 
 ## Conflicts/Omissions
-#### Reference
-1. XMEGA E5 Data Sheet,  DS40002059A, Rev A - 08/2018
-2. XMEGA E MANUAL,       Atmel–42005E–AVR–XMEGA E–11/2014
-3. ATxmega32E5def.inc,   Version 1.00, 2012-11-02 13:32
-
 #### Conflicts
 1. 16-bit Timer/Counter Type 4 and 5
    - CTRLGCLR/CTRLGSET Register, Timer/Counter STOP bit
@@ -64,3 +62,15 @@ mind that I am but a mortal man and proceed accordingly.
    - Workaround
      - I added the relevant definitions to TWI_Defs.asm
      - The added definitions were transcribed from Ref 2 but not operationally tested
+
+## Tidbits
+#### APB: Technical Writer at Large. Armed with Red and Green Pens. Extremely Dangerous.
+A poorly written datasheet cries out to me like a wounded animal. This is a good thing if you are
+seeking technical clarity. Not so good if you would like to see some actual code samples.
+
+#### Two Differences
+Reference 1, section 13.2, fourth paragraph, begins "There are two differences between
+timer/counter type 4 and type 5". It then goes on to list one.
+
+Are you, perhaps, curious as to what the second difference might be?
+
