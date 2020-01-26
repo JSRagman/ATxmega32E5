@@ -2,14 +2,12 @@
 ; ATxmega32e5_main_skelly.asm
 ;
 ; Created: 26Nov2019
-; Updated: 17Jan2020
+; Updated: 26Jan2020
 ; Author : JSRagman
 ;
 
 ; Description:
-;     ATxmega32E5 interrupt table with a bare main() outline which sets
-;     the system clock source.
-
+;     ATxmega32E5 interrupt table and main()
 
 ; Reference
 ;     1. ATxmega32e5def.inc - interrupt vector definitions
