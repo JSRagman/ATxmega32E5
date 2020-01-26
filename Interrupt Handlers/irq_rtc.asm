@@ -2,7 +2,7 @@
 ; irq_rtc.asm
 ;
 ; Created: 20Jan2020
-; Updated: 25Jan2020
+; Updated: 26Jan2020
 ; Author : JSRagman
 ;
 
@@ -16,7 +16,7 @@
 
 
 
-; irq_rtc_ovf                                                         25Jan2020
+; irq_rtc_ovf                                                         26Jan2020
 ; -----------------------------------------------------------------------------
 ; Description:
 ;     Decrements rCentisecs until it reaches zero, then sets the
@@ -44,7 +44,9 @@ irq_rtc_ovf:
 
 irq_rtc_ovf_stop:
     sbi    GPIO_OPSTAT,  RTC_DING_bp        ; RTC_DING = 1
-    sts    RTC_INTCTRL,  rZero              ; OVF level = Off
+    lds    r16,          RTC_INTCTRL        ; r16 = INTCTRL register
+    andi   r16,          RTC_COMPINTLVL_gm  ; mask out all but COMP level bits
+    sts    RTC_INTCTRL,  r16                ; INTCTRL = (OVF level = Off, COMP level = unchanged)
                                             ; fall into exit
 irq_rtc_ovf_exit:
 ;   OVF interrupt flag is cleared automatically
