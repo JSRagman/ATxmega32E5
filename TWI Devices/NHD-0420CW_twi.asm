@@ -104,7 +104,7 @@ NHD0420CW_Init_exit:
 ; Parameters:
 ;     r20    - SLA+W for the targeted TWI device
 ; Address Labels Used:
-;     ee_us2066_initdata - EEPROM address of initialization data
+;     ee_sutext - EEPROM address of text to be displayed on startup
 NHD0420CW_ShowStartup:
     push   XL
     push   XH
