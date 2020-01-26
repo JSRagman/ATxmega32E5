@@ -106,23 +106,37 @@ irq_port_A:
 
 
 
-; reset                                                               17Jan2020
+; reset                                                               25Jan2020
 ; -----------------------------------------------------------------------------
 ; Configuration:
 ;     System Clock      32      MHz internal RC oscillator
 ;     RTC Clock         32.768  kHz internal oscillator
+; Functions Called:
+;     RTC_Init    - Initializes the Real-Time Counter (RTC)
+; Macros Used:
+;     init_ports - Initialize I/O ports
+;     init_twi   - Initialize TWI module
+;     stsp       - Writes to a Configuration Change Protected (CCP) register
+; Status:
+;     25Jan2020 - enable oscillators
+;               - set system clock = 32 MHz
+;               - set RTC clock
+;               - configure RTC
 reset:
 ;   Initialize register constants
     clr    rZero
 
-;   Set System Clock to 32 MHz internal RC oscillator
-;   CPU_CCP  (0x0034) - Configuration Change Protection (CCP)
-;   CLK_CTRL (0x0040) - Clock Control Register
+;   Initialize the Data Stack
+    ldi  YL,    low(INTERNAL_SRAM_END - HSTACK_MAXSIZE + 1)
+    ldi  YH,   high(INTERNAL_SRAM_END - HSTACK_MAXSIZE + 1)
+
+;   Configure I/O ports
+    init_ports
 
 ;   Enable oscillators that will be used
-    ldi    r20,      (1<<OSC_RC2MEN_bp)     ;   2 MHz internal
-    ori    r20,      (1<<OSC_RC32MEN_bp)    ;  32 MHz internal
-    ori    r20,      (1<<OSC_RC32KEN_bp)    ;  32.768 kHz internal
+    lds    r16,    OSC_CTRL                 ; r16  = OSC_CTRL
+    ori    r16,    (1<<OSC_RC32MEN_bp)      ; r16 |=  32     MHz internal
+    ori    r16,    (1<<OSC_RC32KEN_bp)      ; r16 |=  32.768 kHz internal
     sts    OSC_CTRL, r16
 
 ;   Wait for stable 32 MHz oscillator.
@@ -134,12 +148,36 @@ reset_sysclock_wait:
     lds    r16,    OSC_STATUS               ; r16 = OSC_STATUS
     andi   r16,    OSC_RC32MRDY_bm          ; if (32MHz != READY)
     breq   reset_sysclock_wait              ;     goto reset_sysclock_wait
+                                            ; else
+    stsp CLK_CTRL, CLK_SCLKSEL_RC32M_gc     ;     sysclock = 32 MHz
 
-;   Clock is ready - Set system clock
-    ldi    r16,       CCP_IOREG_gc          ; CCP - Write to protected I/O register
-    ldi    r17,       CLK_SCLKSEL_RC32M_gc  ; CLK - 32 MHz internal RC oscillator
-    sts    CPU_CCP,   r16
-    sts    CLK_CTRL,  r17
+
+;   Configure RTC - Wait for internal 32.768 kHz oscillator to be ready.
+;   Note: See the 8 MHz oscillator Note, above.
+reset_rtcclock_wait:
+    lds    r16,    OSC_STATUS               ; r16 = OSC_STATUS
+    andi   r16,    OSC_RC32KRDY_bm          ; if (32.768kHz != READY)
+    breq   reset_rtcclock_wait              ;     goto reset_rtcclock_wait
+
+;   Set the RTC clock source = 32.768 kHz internal oscillator
+    ldi    r16,    CLK_RTCSRC_RCOSC32_gc    ; RTC clock = 32.768 kHz
+    ori    r16,    (1<<CLK_RTCEN_bp)        ; RTC clock = enabled
+    sts    CLK_RTCCTRL,  r16
+
+;   Configure the RTC to overflow at 10-millisecond intervals.
+    ldi    r20,    0                        ; arg: CompareH = 0
+    ldi    r21,    0                        ; arg: CompareL = 0
+    ldi    r22,    high(330)                ; arg: PeriodH  = high(330)
+    ldi    r23,     low(330)                ; arg: PeriodL  =  low(330)
+    ldi    r24,    RTC_PRESCALER_DIV1_gc    ; arg: RTC Prescaler = RTC Clock/1
+    rcall  RTC_Init                         ; RTC_Init(r20,r21,r22,r23)
+    
+;   Enable Medium- and High-Priority interrupts
+    ldi    r16, (1<<PMIC_MEDLVLEN_bp)|(1<<PMIC_HILVLEN_bp)
+    sts    PMIC_CTRL, r16
+
+;   Light the fuse
+    sei
 
 
 
