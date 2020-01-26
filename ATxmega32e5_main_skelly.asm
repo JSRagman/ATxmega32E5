@@ -104,7 +104,7 @@ irq_port_A:
 
 
 
-; reset                                                               25Jan2020
+; reset                                                               26Jan2020
 ; -----------------------------------------------------------------------------
 ; Configuration:
 ;     System Clock      32      MHz internal RC oscillator
@@ -170,12 +170,34 @@ reset_rtcclock_wait:
     ldi    r24,    RTC_PRESCALER_DIV1_gc    ; arg: RTC Prescaler = RTC Clock/1
     rcall  RTC_Init                         ; RTC_Init(r20,r21,r22,r23)
     
+;   Initialize TWI Module
+    init_twi
+
 ;   Enable Medium- and High-Priority interrupts
     ldi    r16, (1<<PMIC_MEDLVLEN_bp)|(1<<PMIC_HILVLEN_bp)
     sts    PMIC_CTRL, r16
 
 ;   Light the fuse
     sei
+
+;   Initialize TWI-Connected display and show a startup message
+    rcall  NHD0420CW_Reset                  ; reset the display
+    ldi    r20,    DISPLAY_ADDR1            ; r20 = display TWI address
+    rcall  NHD0420CW_Init                   ; SREG_T = NHD0420CW_Init(r20)
+                                            ; if (SREG_T == 1)
+    brts   reset_error                      ;     goto  reset_error
+                                            ; else
+    rcall  NHD0420CW_ShowStartup            ;     SREG_T = NHD0420CW_ShowStartup(r20)
+
+
+reset_success:
+    ButtonLed_Off_m  REDLED_bp              ; red   button LED = Off
+    ButtonLed_On_m   GRNLED_bp              ; green button LED = On
+    rjmp mainloop
+
+reset_error:
+    ButtonLed_On_m   REDLED_bp              ; red   button LED = On
+    ButtonLed_Off_m  GRNLED_bp              ; green button LED = Off
 
 
 
