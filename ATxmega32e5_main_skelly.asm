@@ -13,6 +13,18 @@
 ;     1. ATxmega32e5def.inc - interrupt vector definitions
 
 
+.include "registers.asm"
+.include "constants.asm"
+.include "ports.asm"
+.include "./Macros/dataxfermacros.asm"
+.include "./Macros/initmacros.asm"
+.include "./Macros/datastackmacros.asm"
+.include "./Macros/macros.asm"
+
+
+.eseg
+.include "esegdata.asm"
+
 
 
 .cseg
@@ -28,6 +40,7 @@
 .org  EDMA_CH2_vect                         ; 0x000A  EDMA Channel 2
 .org  EDMA_CH3_vect                         ; 0x000C  EDMA Channel 3
 .org  RTC_OVF_vect                          ; 0x000E  RTC Overflow
+    rjmp irq_rtc_ovf
 .org  RTC_COMP_vect                         ; 0x0010  RTC Compare
 .org  PORTC_INT_vect                        ; 0x0012  Port C External
 .org  TWIC_TWIS_vect                        ; 0x0014  TWI Slave
@@ -57,6 +70,7 @@
 .org  ACA_ACW_vect                          ; 0x0042  ACA Window Mode
 .org  ADCA_CH0_vect                         ; 0x0044  ADC Channel
 .org  PORTD_INT_vect                        ; 0x0046  Port D External
+    rjmp irq_port_D
 .org  TCD5_OVF_vect                         ; 0x0048  T/C5 (Port D) Overflow
 .org  TCD5_ERR_vect                         ; 0x004A  T/C5 (Port D) Error
 .org  TCD5_CCA_vect                         ; 0x004C  Channel A Compare or Capture
@@ -82,24 +96,9 @@ irq_fallout_loop:
 ; Interrupt Handlers
 ; -----------------------------------------------------------------------------
 
-
-; irq_port_A                                                          26Nov2019
-; -----------------------------------------------------------------------------
-; Description:
-;     Port A External Interrupt Handler
-; Triggered By:
-;     
-irq_port_A:
-    push   r16
-    in     r16, SREG
-    push   r16
-
-;   Well? What are you going to do about it?
-
-    pop    r16
-    out    SREG, r16
-    pop    r16
-    reti
+.include "./IrqHandlers/irq_ioports.asm"
+.include "./IrqHandlers/ioport_functions.asm"
+.include "./IrqHandlers/irq_rtc.asm"
 
 
 
@@ -209,5 +208,10 @@ mainloop:
 ; Functions
 ; -----------------------------------------------------------------------------
 ; -----------------------------------------------------------------------------
+.include "mainfunctions.asm"
+.include "./PeripheralFunctions/rtcfuncs.asm"
+.include "./PeripheralFunctions/twifuncs_write.asm"
+.include "./TwiDevices/NHD-0420CW_twi.asm"
+
 
 
