@@ -12,13 +12,6 @@ Basic exploration of the ATxmega32E5 MCU
 System clock, RTC, and TWI configuration good to go. Displaying a message
 from EEPROM to a TWI-connected display.
 
-#### Slow Coach
-
-This is my first contact with Atmel's (ok... fine, Microchip's) xmega line.
-To make matters worse, I actually read datasheets and application notes.
-
-I come back here periodically and read the Purpose section, above, just to remind myself...
-
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
