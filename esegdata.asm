@@ -2,7 +2,7 @@
 ; esegdata.asm
 ;
 ; Created: 18Nov2019
-; Updated: 26Jan2020
+; Updated:  1Feb2020
 ; Author:  JSRagman
 
 
@@ -41,8 +41,7 @@ ee_us2066_initdata:                         ; Display initialization data
 .db 0x80, 0x80
 .db 0x80, 0x0C
 ee_sutext:                                  ; Startup display text
-.db 81                                      ; 80 characters, 20 per line
-.db 0x40                                    ; NHD0420CW Control Byte (Data)
+.db 80                                      ; 80 characters, 20 per line
 .db "Look at me! Zee!    "
 .db "I am te Angel ov    "
 .db "te Odd!             "
