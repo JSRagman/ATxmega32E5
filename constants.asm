@@ -2,7 +2,7 @@
 ; constants.asm
 ;
 ; Created: 16Nov2019
-; Updated: 26Jan2020
+; Updated:  1Feb2020
 ; Author:  JSRagman
 ;
 ; MCU:     ATxmega32E5
