@@ -2,7 +2,7 @@
 ; twifuncs_common.asm
 ;
 ; Created: 27Jan2020
-; Updated: 31Jan2020
+; Updated:  1Feb2020
 ; Author : JSRagman
 ;
 
@@ -16,7 +16,8 @@
 
 
 ; Function List:
-;     TwiWrite_Wait          Waits for MSTATUS.WIF to be set.
+;     TwiRead_Wait       Called after starting transmission of SLA+R
+;     TwiWrite_Wait      Called after starting transmission of SLA+W or data
 
 
 
