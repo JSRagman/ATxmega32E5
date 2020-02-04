@@ -2,7 +2,7 @@
 ; constants.asm
 ;
 ; Created: 16Nov2019
-; Updated:  1Feb2020
+; Updated: 26Jan2020
 ; Author:  JSRagman
 ;
 ; MCU:     ATxmega32E5
@@ -40,6 +40,7 @@
 .equ TWIM_SMEN_bp = TWI_MASTER_SMEN_bp
 
 .equ TWIM_WIF_bp = TWI_MASTER_WIF_bp
+.equ TWIM_RIF_bp = TWI_MASTER_RIF_bp
 
 ; TWI Master Bit Masks
 .equ TWI_WRITEFLAGS_bm = (1<<TWI_MASTER_RXACK_bp)|(1<<TWI_MASTER_ARBLOST_bp)|(1<<TWI_MASTER_BUSERR_bp)
@@ -52,7 +53,9 @@
 .equ ACKACT_ACK_c  = 0x00    ; Send ACK
 .equ ACKACT_NACK_c = 0x04    ; Send NACK
 
+.equ TWIM_BREC_c   = TWI_MASTER_CMD_RECVTRANS_gc
 .equ TWIM_STOP_c   = TWI_MASTER_CMD_STOP_gc
+.equ TWIM_STOPNACK_c = TWI_MASTER_CMD_STOP_gc | ACKACT_NACK_c
 
 
 ; NHD-0420CW Display Constants:
@@ -198,43 +201,32 @@
 ;   01  4.096 kHz
 ;   10  8.192 kHz
 ;   11  32.768 kHz
-.equ RTCSQW_1  = 0
-.equ RTCSQW_4  = (1<<MCP7940_SQWFS0_bp)
-.equ RTCSQW_8  = (1<<MCP7940_SQWFS1_bp)
-.equ RTCSQW_32 = (1<<MCP7940_SQWFS0_bp)|(1<<MCP7940_SQWFS1_bp)
+.equ MCP7940_SQW_1  = 0
+.equ MCP7940_SQW_4  = (1<<MCP7940_SQWFS0_bp)
+.equ MCP7940_SQW_8  = (1<<MCP7940_SQWFS1_bp)
+.equ MCP7940_SQW_32 = (1<<MCP7940_SQWFS0_bp)|(1<<MCP7940_SQWFS1_bp)
 
 
 ; RTCWKDAY Register Constants
-.equ MONDAY    = 1
-.equ TUESDAY   = 2
-.equ WEDNESDAY = 3
-.equ THURSDAY  = 4
-.equ FRIDAY    = 5
-.equ SATURDAY  = 6
-.equ SUNDAY    = 7
+.equ MCP7940_MONDAY    = 1
+.equ MCP7940_TUESDAY   = 2
+.equ MCP7940_WEDNESDAY = 3
+.equ MCP7940_THURSDAY  = 4
+.equ MCP7940_FRIDAY    = 5
+.equ MCP7940_SATURDAY  = 6
+.equ MCP7940_SUNDAY    = 7
 
 ; RTCMTH Register Constants
-.equ JANUARY   = 1
-.equ FEBRUARY  = 2
-.equ MARCH     = 3
-.equ APRIL     = 4
-.equ MAY       = 5
-.equ JUNE      = 6
-.equ JULY      = 7
-.equ AUGUST    = 8
-.equ SEPTEMBER = 9
-.equ OCTOBER   = 0x10
-.equ NOVEMBER  = 0x11
-.equ DECEMBER  = 0x12
-
-
-; Startup Configuration and Time
-
-.equ RTSEC   = 0
-.equ RTMIN   = 0x5
-.equ RTHOUR  = 0x18
-.equ RTDAY   = (1<<MCP7940_VBATEN_bp)|(FRIDAY)
-.equ RTDATE  = 0x20
-.equ RTMONTH = SEPTEMBER
-.equ RTYEAR  = 0x19
+.equ MCP7940_JANUARY   = 1
+.equ MCP7940_FEBRUARY  = 2
+.equ MCP7940_MARCH     = 3
+.equ MCP7940_APRIL     = 4
+.equ MCP7940_MAY       = 5
+.equ MCP7940_JUNE      = 6
+.equ MCP7940_JULY      = 7
+.equ MCP7940_AUGUST    = 8
+.equ MCP7940_SEPTEMBER = 9
+.equ MCP7940_OCTOBER   = 0x10
+.equ MCP7940_NOVEMBER  = 0x11
+.equ MCP7940_DECEMBER  = 0x12
 
