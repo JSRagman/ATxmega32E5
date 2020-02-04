@@ -2,7 +2,7 @@
 ; twifuncs_common.asm
 ;
 ; Created: 27Jan2020
-; Updated:  1Feb2020
+; Updated:  4Feb2020
 ; Author : JSRagman
 ;
 
@@ -16,41 +16,45 @@
 
 
 ; Function List:
+;     TwiWrite_Wait      Called after starting transmission of a TWI address (SLA+W) or data
 ;     TwiRead_Wait       Called after starting transmission of SLA+R
-;     TwiWrite_Wait      Called after starting transmission of SLA+W or data
 
 
+; Depends On:
+;      ATxmega32e5def.inc
+;      constants.asm
 
 
+#ifndef _twifuncs_common
+#define _twifuncs_common
 
-; TwiRead_Wait                                                        28Jan2020
+
+; TwiRead_Wait                                                         4Feb2020
 ; -----------------------------------------------------------------------------
 ; Description:
-;     Called after starting transmission of a TWI address with the direction
-;     bit set (SLA+R).
-;
-;     This function waits for a RIF, ARBLOST, or BUSERR status flag to be set.
-;     RIF indicates success.
+;     Waits for a RIF, ARBLOST, or BUSERR status flag to be set.
 ; Parameters:
 ;     None
-; I/O Registers Affected:
-;     TWIC_MASTER_DATA - receives incoming data
+; General-Purpose Registers:
+;     Named      - 
+;     Parameters - 
+;     Modified   - 
 ; Constants (Non-Standard):
 ;     TWI_READFLAGS_bm - mask out all but RIF, ARBLOST, and BUSERR
-;     TWIM_xxx  - TWIC_MASTER_xxx or
-;                 TWI_MASTER_xxx
+;     TWIM_STATUS      - TWIC_MASTER_STATUS
 ; Returns:
+;     r23    - ACK action
 ;     SREG_T - success (0) or fail (1)
 TwiRead_Wait:
     push   r19
 
 TwiRead_Wait_wait:
     lds    r19,    TWIM_STATUS              ; r19 = STATUS
-    andi   r19,    TWI_READFLAGS_bm        ; if (readflags == 0)
+    andi   r19,    TWI_READFLAGS_bm         ; if (READFLAGS == 0)
     breq   TwiRead_Wait_wait                ;     goto TwiRead_Wait_wait
 
-    andi   r19,    TWIM_RIF_bm              ; if (RIF == 1)
-    brne   TwiRead_Wait_exit                ;     goto exit
+    sbrc   r19,    TWIM_RIF_bp              ; if (RIF == 1)
+    rjmp   TwiRead_Wait_exit                ;     goto exit
                                             ; else
     set                                     ;     error: SREG_T = 1
                                             ;     fall into exit
@@ -58,6 +62,8 @@ TwiRead_Wait_exit:
 
     pop    r19
     ret
+
+
 
 
 
@@ -111,3 +117,6 @@ TwiWrite_Wait_exit:
 
     pop    r16
     ret
+
+
+#endif

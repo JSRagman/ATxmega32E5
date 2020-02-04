@@ -2,7 +2,7 @@
 ; twifuncs_write.asm
 ;
 ; Created: 17Nov2019
-; Updated:  1Feb2020
+; Updated:  2Feb2020
 ; Author : JSRagman
 ;
 
@@ -15,13 +15,20 @@
 ;     2. SLA+W (used in comments) means Slave TWI address plus Write bit.
 
 
-
 ; Function List:
 ;     TwiDw_FromDataStack  -  Transmits one or more bytes from the Data Stack
 ;     TwiDw_FromEeprom     -  Transmits a block of data from EEPROM
 ;     TwiDw_FromSram       -  Transmits a block of data from SRAM
 
+; Depends On:
+;      ATxmega32e5def.inc
+;      constants.asm
+;      datastackmacros.asm
+;      twifuncs_common.asm
 
+
+
+.include "./TwiFunctions/twifuncs_common.asm"
 
 
 ; TwiDw_FromDataStack                                                  1Feb2020
@@ -58,6 +65,8 @@
 ; Returns:
 ;     SREG_T - pass (0) or fail (1)
 TwiDw_FromDataStack:
+    push   r16
+    push   r17
 
    .def    slaw    = r20                    ; param: target SLA+W
    .def    datbyt  = r16                    ; data byte
@@ -92,11 +101,13 @@ TwiDw_FromDataStack_exit:
     ldi    r16,         TWIM_STOP_c         ; CTRLC: command = STOP
     sts    TWIM_CTRLC,  r16
 
+
    .undef  slaw
    .undef  dscount
    .undef  datbyt
 
-
+    pop    r17
+    pop    r16
     ret
 
 
@@ -268,6 +279,7 @@ TwiDw_FromSram_popall:                      ; Ensures the data stack is empty be
 TwiDw_FromSram_exit:
     ldi    r16,         TWIM_STOP_c         ; CTRLC: command = STOP
     sts    TWIM_CTRLC,  r16
+
 
    .undef  dscount
    .undef  srcount
