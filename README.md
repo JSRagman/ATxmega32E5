@@ -31,6 +31,7 @@ What to do... what to do.
 
 ## Extra Hardware
 - TWI-connected character OLED display
+- TWI-connected real-time clock/calendar
 - Illuminated pushbutton switches (emphatically debounced)
 
 ## References
