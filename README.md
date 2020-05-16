@@ -8,29 +8,28 @@ Basic exploration of the ATxmega32E5 MCU
 - If I figure out what the Custom Logic Module is good for, we'll cover that too.
 
 ## Status
-#### Woohoo
-System clock, RTC, and TWI configuration good to go. Displaying a message
-from EEPROM to a TWI-connected display.
+#### Where in the Wide World of Sports Have You Been?
+Alas, this project is growing so rapidly it was beginning to look like the Edith Finch
+house. I have been organizing files and functions, imposing some parameter discipline,
+and generally whacking things into shape.
 
+As for the XMEGA E5 Xplained board - void the warranty. Cut straps were cut.
+The light sensor is gone and the board controller controls nothing. The user pushbuttons
+are still there, but you don't want to push either of them. Perhaps I should have removed
+the resistors. Ports are a scarce commodity and I needed more.
+
+I did, however, retain the rotary encoder and the on-board graphic OLED display.
+They will be useful.
+
+I must say the whole thing is looking pretty good. Soon, I will post an update that replaces
+almost everything. You will like it. Trust me.
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
-#### XMEGA E5 Xplained
-- Forget the board controller
-- Say goodbye to the demo application
-- Onboard 128 x 32 OLED... might come in handy
-- Rotary encoder with push-switch... that too
-- User buttons and LEDs... you can never have too many
-- Ambient light sensor... red-headed stepchild - I'm sure we can think of something
-#### Tightly Wrapped
-around the axle...
-The Xplained board makes me give up more IO pins than I would like for the on-board, um... stuff.
-
-Having boards made, however, is expensive. Also, I'm not confident in my ability to hand-solder a 32TQFP package.
-What to do... what to do.
+#### Atmel XMEGA E5 Xplained Board
 
 ## Extra Hardware
-- TWI-connected character OLED display
+- TWI-connected character OLED display (2)
 - TWI-connected real-time clock/calendar
 - Illuminated pushbutton switches (emphatically debounced)
 
