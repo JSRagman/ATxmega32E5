@@ -1,28 +1,33 @@
 ## Purpose
-Basic exploration of the ATxmega32E5 MCU
-- I2C Interface
-- SPI
-- ADC
-- Timer/Counters
-- External interrupts
-- If I figure out what the Custom Logic Module is good for, we'll cover that too.
+Basic exploration of the ATxmega32E5 MCU, using assembly language.
+
+This is not intended to be an application that can be installed, although I have built
+and run the thing. It is meant to give specific functions related to each of the
+ATxmega32E5 peripherals.
+
+Take the Two-Wire Interface, for example. TWI-related functions are in twi.asm.
+If you are stuck trying to read sequential registers from a device, the TwiRd_Regs function
+does just that. You can use it as it is or adapt the code for your own needs - the intent
+is to show one method of getting the job done.
 
 ## Status
-#### Where in the Wide World of Sports Have You Been?
-Alas, this project is growing so rapidly it was beginning to look like the Edith Finch
-house. I have been organizing files and functions, imposing some parameter discipline,
-and generally whacking things into shape.
+#### Change of Plan
+A keypad! Why didn't I think of a keypad?
 
-As for the XMEGA E5 Xplained board - void the warranty. Cut straps were cut.
-The light sensor is gone and the board controller controls nothing. The user pushbuttons
-are still there, but you don't want to push either of them. Perhaps I should have removed
-the resistors. Ports are a scarce commodity and I needed more.
+I've been trying to create a real-time clock interface using five buttons and a rotary
+encoder. Forget that. I'm adding a 12-button keypad to the project. When I receive it
+from Digi-Key (shameless plug), I'll update the schematics and start writing the interface.
+
+I'm tempted to add another MCU to be responsible only for the keypad and real-time clock.
+We'll see. This is a case of mission creep gone wild.
+#### XMEGA E5 Xplained Board
+Void the warranty. Cut straps were cut, the light sensor is gone, and the board controller
+controls nothing. The user pushbuttons are still there, but you don't want to push either
+of them. Perhaps I should have removed the resistors.
+Ports are a scarce commodity and I needed more.
 
 I did, however, retain the rotary encoder and the on-board graphic OLED display.
 They will be useful.
-
-I must say the whole thing is looking pretty good. Soon, I will post an update that replaces
-almost everything. You will like it. Trust me.
 ## Development Tools
 #### Atmel Studio 7 - AVR Assembler
 #### Atmel ICE - Program and Debug Interface (PDI)
@@ -32,6 +37,7 @@ almost everything. You will like it. Trust me.
 - TWI-connected character OLED display (2)
 - TWI-connected real-time clock/calendar
 - Illuminated pushbutton switches (emphatically debounced)
+- A 12-button keypad
 
 ## References
 1. ATxmega32E5/16E5/8E5 XMEGA E5 Data Sheet,
