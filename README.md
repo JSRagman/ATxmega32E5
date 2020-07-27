@@ -11,15 +11,9 @@ does just that. You can use it as it is or adapt the code for your own needs - t
 is to show one method of getting the job done.
 
 ## Status
-#### Change of Plan
-A keypad! Why didn't I think of a keypad?
+On hold.
 
-I've been trying to create a real-time clock interface using five buttons and a rotary
-encoder. Forget that. I'm adding a 12-button keypad to the project. When I receive it
-from Digi-Key (shameless plug), I'll update the schematics and start writing the interface.
 
-I'm tempted to add another MCU to be responsible only for the keypad and real-time clock.
-We'll see. This is a case of mission creep gone wild.
 #### XMEGA E5 Xplained Board
 Void the warranty. Cut straps were cut, the light sensor is gone, and the board controller
 controls nothing. The user pushbuttons are still there, but you don't want to push either
